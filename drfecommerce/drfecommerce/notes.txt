@@ -1,0 +1,13 @@
+1. extra-action = used when  we want to retrieve other from pk .
+humko pk s search nhi krna hai ..
+
+
+
+2. @action --adhoc routable mthods ko define karne ke liye koi bhi custom methods ko define karne k liye
+joki url rkhte hai .
+
+
+
+
+#. agar hame 1 model k ander dusra model dikhana hai in django admin
+use. Tabularinline...
