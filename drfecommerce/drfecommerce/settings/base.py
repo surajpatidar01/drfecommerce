@@ -1,13 +1,16 @@
 
-
+import os
 from pathlib import Path
+from dotenv import load_dotenv
+
+load_dotenv()
+
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-
-SECRET_KEY = 'django-insecure-)2l1*!+9_wzekb!ob4r12ijwe%5z+9_mgwdn4y581h0p7_vt=c'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 
 DEBUG = True
@@ -26,9 +29,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     #External apps
     'rest_framework',
-
+    'mptt',
+     "drf_spectacular",
+    "drf_spectacular_sidecar",
     #Internal apps
-
+    # 'drfecommerce.product.apps.ProductConfig',
+    'drfecommerce.product',
 
 ]
 
@@ -106,3 +112,16 @@ STATIC_URL = 'static/'
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+REST_FRAMEWORK = {
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+}
+
+
+# settings.py
+SPECTACULAR_SETTINGS = {
+    'TITLE': ' DRF Ecommerce API',
+    'DESCRIPTION': 'DRF Ecommerce API for django ninjas',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,   # recommended when building UI endpoints
+}
